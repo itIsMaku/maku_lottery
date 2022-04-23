@@ -48,7 +48,7 @@ function RegisterTicket(source, ticketType)
             ['type'] = ticketType
         },
         function(changed)
-            print('Registered lottery ticket ' .. ticketType .. '. (' .. xPlayer.getName() .. ';' .. xPlayer.getIdentifier() .. ')')
+            Info('Registered new lottery ticket ' .. ticketType .. '. (' .. xPlayer.getName() .. ';' .. xPlayer.getIdentifier() .. ')')
             SendWebhook(
                 Webhooks.Bought.URL,
                 Webhooks.Bought.Username,
@@ -217,6 +217,7 @@ end)
 
 if Config.Debug.StartCommand.Enabled then
     RegisterCommand('startlottery', function()
+        Info('Starting lottery debug.')
         StartLottery(Config.Debug.StartCommand.TicketType)
     end)
 end
@@ -240,7 +241,7 @@ function StartLottery(ticketType)
         }
     )
     if #tickets == 0 then
-        print('No one bought tickets.')
+        Warn('Lottery win was cancelled. Nobody bought tickets.')
         return
     end
     local price = 0

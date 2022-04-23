@@ -23,15 +23,3 @@ function CreateUsable3DText(vector, displayDistance, canUseDistance, text)
         Create3DText(vector, '[E] ' .. text)
     end
 end
-
-function CreateLotteryShopBlip()
-    blip = AddBlipForCoord(Config.LotteryShop.Location)
-    SetBlipSprite(blip, Config.LotteryShop.Blip.Sprite)
-    SetBlipDisplay(blip, Config.LotteryShop.Blip.Display)
-    SetBlipScale(blip, Config.LotteryShop.Blip.Scale)
-    SetBlipColour(blip, Config.LotteryShop.Blip.Color)
-    SetBlipAsShortRange(blip, true)
-    BeginTextCommandSetBlipName("STRING")
-    AddTextComponentString(Config.LotteryShop.Blip.Title)
-    EndTextCommandSetBlipName(blip)
-end

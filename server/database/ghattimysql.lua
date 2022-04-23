@@ -1,4 +1,4 @@
-if MySQL == 'ghattimysql' then
+if MySQLScript == 'ghattimysql' then
     MySQL = {}
 
     MySQL.Sync = {}

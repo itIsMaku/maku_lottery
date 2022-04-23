@@ -21,4 +21,4 @@ Webhooks = {
     }
 }
 
-MySQL = 'mysql-async' -- mysql-async / ox-mysql  / ghattimysql
+MySQLScript = 'mysql-async' -- mysql-async / oxmysql  / ghattimysql

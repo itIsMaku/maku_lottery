@@ -59,8 +59,8 @@ Config.LotteryStart = {
 
 Config.Debug = {
     StartCommand = {
-        Enabled = true, -- If true, command /startlottery will be enabled at server and client; RECOMMENDATION: If you server isn't Development server, set this to FALSE!
-        TicketType = 'Silver' -- Category what will be started by /startlottery
+        Enabled = false, -- If true, command /startlottery will be enabled at server and client; RECOMMENDATION: If you server isn't Development server, set this to FALSE!
+        TicketType = 'Bronze' -- Category what will be started by /startlottery
     }
 }
 
@@ -69,24 +69,28 @@ Config.Debug = {
 
 -- Client side notifications
 function SendClientNotification(type, text)
-    if type == 'success' then
+    --[[if type == 'success' then
         exports['mythic_notify']:SendAlert('success', text)
     elseif type == 'error' then
         exports['mythic_notify']:SendAlert('error', text)
     elseif type == 'info' then
         exports['mythic_notify']:SendAlert('inform', text)
     end
+    ]]
+    ESX.ShowNotification(text)
 end
 
 -- Server side notifications
 function SendServerNotification(source, type, text)
-    if type == 'success' then
+    --[[if type == 'success' then
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'success', text = text })
     elseif type == 'error' then
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'error', text = text })
     elseif type == 'info' then
         TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'inform', text = text })
     end
+    ]]
+    TriggerClientEvent('esx:showNotification', source, text)
 end
 
 -- Down you can implement your own chat message

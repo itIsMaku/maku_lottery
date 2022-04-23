@@ -1,4 +1,4 @@
-if MySQL == 'oxmysql' then
+if MySQLScript == 'oxmysql' then
     MySQL = {}
 
     MySQL.Sync = {}

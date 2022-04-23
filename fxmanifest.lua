@@ -4,16 +4,22 @@ lua54 'yes'
 version '1.2'
 
 client_scripts {
-	'client/*.lua',
-	'configs/cl_config.lua',
+	'client/cl_utils.lua',
+	'client/cl_main.lua'
+}
+
+shared_scripts {
+	'configs/sh_config.lua'
 }
 
 server_scripts {
+	'configs/sv_config.lua',
 	'@mysql-async/lib/MySQL.lua',
-	'server/database/*.lua'
+	'server/database/*.lua',
 
-	'server/*.lua',
-	'configs/sv_config.lua'
+	'server/sv_utils.lua',
+	'server/sv_dbloader.lua',
+	'server/sv_main.lua'
 }
 
 depencies {
@@ -24,7 +30,7 @@ depencies {
 escrow_ignore {
 	'server/database/*.lua',
 	'client/cl_utils.lua',
-	'configs/*.lua',
+	'configs/*.lua'
 }
 
 dependency '/server:4700' -- You must have server artifact at least 4700
