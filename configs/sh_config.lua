@@ -2,12 +2,7 @@ Config = {}
 
 Config.ESX = {
     SharedObjectTrigger = 'esx:getSharedObject',
-    --[[
-        Versions:
-            1.1 - Without weight system, everything what's below and including this version
-            1.2 - With weight system, everything what's above and including this version
-    ]]
-    Version = 1.1
+    UseWeight = true
 }
 
 Config.LotteryShop = {
