@@ -75,20 +75,7 @@ AddEventHandler('codely_lottery:buyTicket', function(ticketType)
     local price = Config.LotteryShop.Tickets[ticketType]
     local itemName = 'ticket_' .. ticketType
     if xPlayer.getMoney() >= price then
-        if Config.ESX.Version == 1.1 then
-            xPlayer.removeMoney(price)
-            xPlayer.addInventoryItem(itemName, 1)
-            SendServerNotification(
-                source,
-                'success',
-                (Config.LotteryShop.Messages.Bought)
-                :format(
-                    ticketType,
-                    price
-                )
-            )
-            RegisterTicket(source, ticketType)
-        elseif Config.ESX.Version == 1.2 then
+        if Config.ESX.UseWeight then
             if xPlayer.canCarryItem(itemName, 1) then
                 xPlayer.removeMoney(price)
                 xPlayer.addInventoryItem(itemName, 1)
@@ -110,11 +97,18 @@ AddEventHandler('codely_lottery:buyTicket', function(ticketType)
                 )
             end
         else
+            xPlayer.removeMoney(price)
+            xPlayer.addInventoryItem(itemName, 1)
             SendServerNotification(
                 source,
-                'error',
-                'The wrong version of ESX is in the configuration files.'
+                'success',
+                (Config.LotteryShop.Messages.Bought)
+                :format(
+                    ticketType,
+                    price
+                )
             )
+            RegisterTicket(source, ticketType)
         end
     else
         SendServerNotification(
