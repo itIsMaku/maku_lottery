@@ -1,24 +1,30 @@
-Webhooks = {}
-
 Webhooks = {
-    Bought = {
-        Enabled = true,
-        URL = 'PUT_YOUR_WEBHOOK',
-        Color = 16776960, -- (Decimal color), converting tool = https://convertingcolors.com/
-        Username = 'Lottery Purchase',
-        Title = '**Purchase**',
-        Description = 'Player %s has bought a lottery ticket, category %s.',
-        Footer = 'Nickname: %s | Identifier: %s'
+    bought = {
+        url = 'https://discord.com/xyz',
+        username = 'Lottery Purchase',
+        data = {
+            {
+                ["color"] = 16776960,
+                ["title"] = '**Purchase**',
+                ["description"] = 'Player {name} has bought a lottery ticket, category {category}.',
+                ["footer"] = {
+                    ["text"] = 'Nickname: {name} | Identifier: {identifier}',
+                }
+            }
+        }
     },
-    Run = {
-        Enabled = true,
-        URL = 'PUT_YOUR_WEBHOOK',
-        Color = 16776960, -- (Decimal color), converting tool = https://convertingcolors.com/
-        Username = 'Lottery',
-        Title = '**Win**',
-        Description = '%s won $%s in the %s category.',
-        Footer = 'Good luck tomorrow!'
+    draw = {
+        url = 'https://discord.com/xyz',
+        username = 'Lottery',
+        data = {
+            {
+                ["color"] = 16776960,
+                ["title"] = '**Win**',
+                ["description"] = '{character} won ${price} in the {category} category.',
+                ["footer"] = {
+                    ["text"] = 'Good luck tomorrow!',
+                }
+            }
+        }
     }
 }
-
-MySQLScript = 'mysql-async' -- mysql-async / oxmysql  / ghattimysql

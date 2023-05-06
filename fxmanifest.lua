@@ -1,36 +1,50 @@
-game "gta5"
 fx_version 'cerulean'
-lua54 'yes'
-version '1.2'
+game 'gta5'
+version '1.3'
+author 'maku#5434'
+description 'lottery script for FiveM'
 
-client_scripts {
-	'client/cl_utils.lua',
-	'client/cl_main.lua'
-}
+lua54 'yes'
 
 shared_scripts {
-	'configs/sh_config.lua'
+	'configs/sh_config.lua',
+	'internal/require.lua',
+
+	'modules/commons/blip.lua',
+	'modules/commons/log.lua',
+	'modules/commons/tables.lua'
+}
+
+client_scripts {
+	'@PolyZone/client.lua',
+	'@PolyZone/BoxZone.lua',
+	'@PolyZone/EntityZone.lua',
+	'@PolyZone/CircleZone.lua',
+	'@PolyZone/ComboZone.lua',
+
+	'modules/framework/type/esx/client.lua',
+	'modules/framework/type/qb/client.lua',
+	'modules/framework/resolve.lua',
+	'modules/menus/client.lua',
+
+	'internal/polyzone.lua',
+	'client.lua'
 }
 
 server_scripts {
 	'configs/sv_config.lua',
 	'@mysql-async/lib/MySQL.lua',
-	'server/database/*.lua',
 
-	'server/sv_utils.lua',
-	'server/sv_dbloader.lua',
-	'server/sv_main.lua'
+	'modules/commons/discord.lua',
+	'modules/framework/type/esx/server.lua',
+	'modules/framework/type/qb/server.lua',
+	'modules/framework/resolve.lua',
+	'modules/tickets/server.lua',
+
+	'server.lua'
 }
 
 depencies {
-	'es_extended',
+	'PolyZone',
 	'cron'
 }
-
-escrow_ignore {
-	'server/database/*.lua',
-	'client/cl_utils.lua',
-	'configs/*.lua'
-}
-
-dependency '/server:4700' -- You must have server artifact at least 4700
