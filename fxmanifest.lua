@@ -41,10 +41,11 @@ server_scripts {
 	'modules/framework/resolve.lua',
 	'modules/tickets/server.lua',
 
+	'internal/cron.lua',
+
 	'server.lua'
 }
 
 depencies {
-	'PolyZone',
-	'cron'
+	'PolyZone'
 }
