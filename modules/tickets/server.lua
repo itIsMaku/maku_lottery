@@ -3,6 +3,8 @@ local log = require 'modules.commons.log'
 local tables = require 'modules.commons.tables'
 local discord = require 'modules.commons.discord'
 
+local webhooks = require 'data.webhooks'
+
 function registerTicket(playerId, category)
     local identifier = framework.getIdentifier(playerId)
     local name = GetPlayerName(playerId)
@@ -14,7 +16,7 @@ function registerTicket(playerId, category)
         },
         function(changed)
             log.debug('Registered new lottery ticket %s (%s, %s)', category, identifier, name)
-            discord.sendWebhook(Webhooks.bought, {
+            discord.sendWebhook(webhooks.bought, {
                 ['{name}'] = name,
                 ['{identifier}'] = identifier,
                 ['{category}'] = category,
@@ -75,7 +77,7 @@ function startLottery(category)
     end
     local win = tickets[math.random(#tickets)]
     local characterName = framework.getCharacterName(win.identifier)
-    discord.sendWebhook(Webhooks.draw, {
+    discord.sendWebhook(webhooks.draw, {
         ['{identifier}'] = win.identifier,
         ['{category}'] = categoryElement.name,
         ['{character}'] = characterName,

@@ -1,4 +1,4 @@
-Webhooks = {
+return {
     bought = {
         url = 'https://discord.com/xyz',
         username = 'Lottery Purchase',

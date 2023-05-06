@@ -1,13 +1,13 @@
 fx_version 'cerulean'
 game 'gta5'
-version '1.3'
+version '1.4'
 author 'maku#5434'
 description 'lottery script for FiveM'
 
 lua54 'yes'
 
 shared_scripts {
-	'configs/sh_config.lua',
+	'config.lua',
 	'internal/require.lua',
 
 	'modules/commons/blip.lua',
@@ -32,8 +32,9 @@ client_scripts {
 }
 
 server_scripts {
-	'configs/sv_config.lua',
 	'@mysql-async/lib/MySQL.lua',
+
+	'data/webhooks.lua',
 
 	'modules/commons/discord.lua',
 	'modules/framework/type/esx/server.lua',
