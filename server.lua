@@ -60,7 +60,7 @@ TriggerEvent('cron:runAt', Config.Draw.Hour, Config.Draw.Minutes, function(day, 
     end
     if execute then
         for index, category in ipairs(Config.Categories) do
-            tickets.startLottery(category)
+            tickets.startLottery(category.id)
             Citizen.Wait(1000)
         end
     end
