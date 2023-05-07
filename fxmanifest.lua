@@ -1,6 +1,6 @@
 fx_version 'cerulean'
 game 'gta5'
-version '1.4'
+version '1.4.1'
 author 'maku#5434'
 description 'lottery script for FiveM'
 
