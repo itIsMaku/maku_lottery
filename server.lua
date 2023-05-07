@@ -51,11 +51,6 @@ RegisterNetEvent('maku_lottery:payOff', function(category)
     tickets.claimWin(playerId, category)
 end)
 
-RegisterCommand('startlottery', function()
-    log.debug('Starting lottery debug.')
-    tickets.startLottery('bronze')
-end)
-
 TriggerEvent('cron:runAt', Config.Draw.Hour, Config.Draw.Minutes, function(day, hour, minutes)
     local execute = false
     if Config.Draw.Day == nil then
