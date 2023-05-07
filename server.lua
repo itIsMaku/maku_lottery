@@ -7,7 +7,7 @@ MySQL.ready(function()
     MySQL.Sync.execute([[
         CREATE TABLE IF NOT EXISTS `lottery` (
             `id` INT NOT NULL AUTO_INCREMENT,
-            `identifier` VARCHAR(40) DEFAULT NULL,
+            `identifier` VARCHAR(46) DEFAULT NULL,
             `category` VARCHAR(40) NOT NULL,
             `run` INT NOT NULL DEFAULT 0,
             `win` INT NOT NULL DEFAULT 0,
@@ -18,7 +18,7 @@ MySQL.ready(function()
     MySQL.Sync.execute([[
         CREATE TABLE IF NOT EXISTS `lottery_wins` (
 	        `id` INT NOT NULL AUTO_INCREMENT,
-	        `identifier` VARCHAR(40) DEFAULT NULL,
+	        `identifier` VARCHAR(46) DEFAULT NULL,
 	        `category` VARCHAR(40) NOT NULL,
 	        `price` INT NOT NULL,
 	        `claimed` INT NOT NULL DEFAULT 0,

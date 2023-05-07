@@ -1,26 +1,37 @@
-local function replace(table, placeholders)
-    for key, value in pairs(table) do
-        if type(value) == 'table' then
-            table[key] = replace(value, placeholders)
-        elseif type(value) == 'string' then
-            for placeholder, replacement in pairs(placeholders) do
-                table[key] = string.gsub(value, placeholder, replacement)
-            end
-        end
+local function multiGsub(str, vals)
+    local result = str
+    for placeholder, replacement in pairs(vals) do
+        result = string.gsub(result, placeholder, replacement)
     end
-    return table
+    return result
 end
 
-function sendWebhook(webhook, placheolders)
+local function replace(table, placeholders)
+    local temp = {}
+    for key, value in pairs(table) do
+        if type(value) == 'table' then
+            temp[key] = replace(value, placeholders)
+        elseif type(value) == 'string' then
+            local result = multiGsub(value, placeholders)
+            temp[key] = result
+        end
+    end
+    return temp
+end
+
+function sendWebhook(webhook, placeholders)
+    if webhook.url == nil then
+        return
+    end
     if placeholders ~= nil then
-        webhook.data = replace(webhook.data, placeholders)
+        webhook.embeds = replace(webhook.embeds, placeholders)
     end
     PerformHttpRequest(
         webhook.url,
         function(err, text, headers)
         end,
         'POST',
-        json.encode(webhook.data),
+        json.encode(webhook),
         {
             ['Content-Type'] = 'application/json',
         }
